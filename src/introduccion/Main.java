@@ -97,23 +97,33 @@ public class Main {
     		//Calcular promedio de calificaciones
             
         	public static void calcularPromedio() {
-        	
-        		if (calificaciones.isEmpty()) {
-                    System.out.println("No hay calificaciones registradas.");
-                } else {
-                    double suma = 0;
 
-                    for (double calificacion : calificaciones) {
-                        suma += calificacion;
-                    }
+        		    if (calificaciones.isEmpty()) {
+        		        System.out.println("No hay calificaciones registradas.");
+        		        return;
+        		    }
 
-                    double promedio = suma / calificaciones.size();
-                    System.out.println("El promedio de calificaciones es: " + promedio);
-                }
-                
-                
+        		    double suma = 0;
+        		    int contadorValidas = 0;
 
-				} 
+        		    for (double calificacion : calificaciones) {
+
+        		        if (calificacion >= 0 && calificacion <= 100) {
+        		            suma += calificacion;
+        		            contadorValidas++;
+        		        } else {
+        		            System.out.println("Se encontró una calificación fuera de rango: " + calificacion);
+        		        }
+        		    }
+
+        		    if (contadorValidas == 0) {
+        		        System.out.println("No hay calificaciones válidas para calcular promedio.");
+        		        return;
+        		    }
+
+        		    double promedio = suma / contadorValidas;
+        		    System.out.printf("El promedio de calificaciones es: %.2f%n", promedio);
+        		}
         	
         	//Mostrar estudiante con la calificación más alta
         	
