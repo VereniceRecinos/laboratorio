@@ -1,164 +1,86 @@
-# 📘 Ejercicio en Clase 3 – Modularización en Java
-## Curso: Programación 1
+PARTE I - ANÁLISIS DEL PROGRAMA ORIGINAL
 
----
+1. IDENTIFICACIÓN DE TAREAS REPETITIVAS
 
-## 🎯 Objetivo
-
-Aplicar los conceptos de:
-
-- Modularización mediante métodos.
-- Uso correcto de variables locales y globales.
-- Validación de entradas del usuario.
-- Manejo básico de excepciones.
-- Mejora de la organización y legibilidad del código.
-
----
-
-## 📌 Instrucciones Generales
-
-- Trabajar en parejas (**Obligatorio**).
-- No utilizar IA para el análisis.
-- Se proporcionará un programa base en Java.
-- Analizarlo, mejorarlo y documentar el proceso en este archivo `README.md`.
-
----
-
-# 🧠 Parte 1 – Análisis del Programa Original
-
-En esta sección deben analizar el programa entregado.
-
-## 1️⃣ Identificación de Tareas Repetitivas
-
-Responder:
 
 - ¿Qué partes del código pueden convertirse en métodos?
+
+En el código original, toda la lógica del programa se encontraba dentro del método main(), incluyendo:
+
+* Agregar estudiante.
+* Mostrar lista de estudiantes.
+* Calcular promedio.
+* Mostrar estudiante con mayor calificación.
+
+Éstas responsabilidades fueron separadas en métodos independientes:
+
+* agregarEstuddiante()
+* mostrarEstudiate()
+* calcularPromedio()
+* mostrarMayor()
+
+Esto permite que el método main() únicamente controle el flujo del menú.
+
+
 - ¿Qué bloques de código se repiten?
+
+En el código original se repiten:
+
+* Validaciones como isEmpty() antes de operar con listas.
+* Estructuras de impresión.
+* Procesos de recorrido de listas(for).
+
+
 - ¿Qué responsabilidades pueden separarse?
 
-Ejemplos de posibles tareas:
+* main(): Controla el menú y el flujo del programa.
+* Métodos específicos: Ejecutan cada funcionalidad.
+* Manejo de excepciones: Se encarga de validar datos ingresados por el usuario.
 
-- Agregar estudiante.
-- Mostrar estudiantes.
-- Calcular promedio.
-- Mostrar estudiante con mayor calificación.
 
-Explicar por qué dividir estas tareas mejora el programa.
+- ¿Por qué dividir estas tareas mejora el programa?
 
----
+Porque aumenta la legibilidad, facilita el mantenimiento, hace que el programa sea más ordenado, reduce el riesgo de errores y permite trabajar en equipo más fácilmente. Además, si se necesita modificar una funcionalidad, solo se edita el método correspondiente sin afectar todo el programa.
 
-## 2️⃣ Variables Locales vs Globales
 
-Responder:
+2. VARIABLES LOCALES VS GLOBALES
 
-- ¿Qué variables deberían declararse como globales (atributos `static` de la clase)?
+
+
+- ¿Qué variables deberían declararse como globales (atributos static de la clase)?
+
+* static List<String> estudiantes
+* static List<Double> calificaciones
+* static Scanner scanner
+
+
 - ¿Cuáles deberían ser locales dentro de un método?
-- ¿Por qué?
 
-Reflexionar sobre:
+* opcion
+* nombre
+* calificacion
+* suma
+* promedio
+* maxCalificacion
+* estudianteMax
 
-- Alcance (scope)
-- Tiempo de vida de la variable
-- Riesgos de modificar datos globales accidentalmente
 
----
+- ¿Por qué? (Reflexionar sobre: alcance (scope), tiempo de vida de la variable, riesgos de modificar datos globales accidentalmente)
 
-# 🏗️ Parte 2 – Modularización del Programa
+* Alcance (Scope): 
 
-Reestructurar el programa aplicando modularización:
+	- Las variables globales pueden ser usadas por todos los métodos de la clase.
+	- Las variables locales solo pueden utilizarse dentro del método donde fueron declaradas.
 
-- Crear métodos claros y específicos.
-- Cada método debe tener una sola responsabilidad.
-- Todos los métodos deben ser llamados desde `main`.
-- Mantener el programa completamente funcional.
+Limitar el alcance ayuda a evitar errores y hace el código más seguro.
 
-No es obligatorio usar nombres específicos, pero deben ser descriptivos.
+* Tiempo de vida de la variable:
 
-Ejemplo de buenas prácticas:
+	- Variables globales: Existen durante toda la ejecución del programa.
+	- Variables locales: Existen solo mientras el método se está ejecutando.
 
-- Un método = una responsabilidad.
-- No mezclar múltiples tareas en un mismo método.
-- Mantener el código ordenado e indentado.
+Esto reduce el consumo innecesario de memoria.
 
----
+* Riesgos de modificar datos globales accidentalmente: 
 
-# 🔐 Parte 3 – Validaciones y Manejo de Excepciones
-
-Implementar mejoras en el programa:
-
-- Validar entradas numéricas.
-- Evitar que el programa falle si el usuario ingresa texto en lugar de números.
-- Verificar que las calificaciones estén en un rango válido.
-- Usar `try-catch` cuando sea necesario.
-
-Explicar en esta sección:
-
-- Qué errores podrían ocurrir.
-- Qué validaciones implementaron.
-- Por qué son importantes.
-
----
-
-# 🧩 Parte 4 – Preguntas de Reflexión
-
-Responder con sus propias palabras.
-
-## 1️⃣ ¿Qué ventajas tiene dividir el código en métodos?
-
-Reflexionar sobre:
-
-- Organización
-- Reutilización
-- Mantenimiento
-- Claridad
-
----
-
-## 2️⃣ ¿Por qué no es recomendable usar muchas variables globales?
-
-Reflexionar sobre:
-
-- Posibilidad de errores inesperados
-- Dificultad para depurar
-- Dependencia entre métodos
-
----
-
-## 3️⃣ ¿Cómo mejora la modularización la legibilidad del código?
-
----
-
-# 📦 Entregables
-
-## 1️⃣ Código Java
-
-- Archivo `Main.java`.
-- Modularizado correctamente.
-- Funcional.
-- Con validaciones básicas.
-- Ordenado y bien indentado.
-
----
-
-## 2️⃣ Este archivo `README.md`
-
-Debe contener:
-
-- Análisis del programa original.
-- Decisiones de modularización.
-- Justificación de variables locales y globales.
-- Respuestas a las preguntas guía.
-- Explicación de validaciones implementadas.
-
----
-
-# 📊 Criterios de Evaluación
-
-| Criterio | Puntos |
-|----------|--------|
-| Programa funciona correctamente | 30 |
-| Modularización adecuada | 25 |
-| Uso correcto de variables locales y globales | 15 |
-| Validaciones implementadas | 15 |
-| Calidad del README | 15 |
-| **Total** | **100 puntos** |
+Puede provocar cambios inesperados en los datos, errores difíciles de detectar y problemas en trabajo colaborativo. Por eso, solo se deben declarar como globales aquellas variables que realmente necesiten ser compartidas.
