@@ -64,7 +64,7 @@ Parte II – Modularización del Programa
 - Todos los métodos son llamados desde `main`.
 - Cada método tiene una sola responsabilidad, facilitando la comprensión y mantenimiento del código.
 
-Parte 3 – Validaciones y Manejo de Excepciones
+Parte III – Validaciones y Manejo de Excepciones
 
  Errores que podrían ocurrir:
   - Usuario ingresa texto en lugar de números.
@@ -79,7 +79,7 @@ Parte 3 – Validaciones y Manejo de Excepciones
   - Garantizan que los cálculos (promedio y mayor nota) sean correctos.
   - Mejoran la experiencia del usuario al mostrar mensajes claros de error.
 
-Parte 4 – Preguntas de Reflexión
+Parte IV – Preguntas de Reflexión
 
 1. Ventajas de dividir el código en métodos:
    - Organización del código.
