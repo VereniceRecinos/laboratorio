@@ -71,6 +71,11 @@ public class Main {
                 	System.out.println("Debe ingresar un número válido para la calificación.");
                 	return;
                 }
+                
+                if (calificacion < 0 || calificacion > 100) {
+                    System.out.println("La calificación debe estar entre 0 y 100.");
+                    return;
+                }
 
                 estudiantes.add(nombre);
                 calificaciones.add(calificacion);
@@ -98,54 +103,44 @@ public class Main {
             
         	public static void calcularPromedio() {
 
+        		if (calificaciones.isEmpty()) {
+        		    System.out.println("No hay calificaciones registradas.");
+        		    return;
+        		}
+
+        		double suma = 0;
+
+        		for (double calificacion : calificaciones) {
+        		    suma += calificacion;
+        		}
+
+        		double promedio = suma / calificaciones.size();
+        		System.out.printf("El promedio de calificaciones es: %.2f%n", promedio);
+        		
+        	}
+        	
+        	//Mostrar estudiante con la calificación más alta
+        	
+        	public static void mostrarMayor() {        	       	
+
         		    if (calificaciones.isEmpty()) {
         		        System.out.println("No hay calificaciones registradas.");
         		        return;
         		    }
 
-        		    double suma = 0;
-        		    int contadorValidas = 0;
+        		    double maxCalificacion = calificaciones.get(0);
+        		    String estudianteMax = estudiantes.get(0);
 
-        		    for (double calificacion : calificaciones) {
+        		    for (int i = 1; i < calificaciones.size(); i++) {
+        		        double nota = calificaciones.get(i);
 
-        		        if (calificacion >= 0 && calificacion <= 100) {
-        		            suma += calificacion;
-        		            contadorValidas++;
-        		        } else {
-        		            System.out.println("Se encontró una calificación fuera de rango: " + calificacion);
+        		        if (nota > maxCalificacion) {
+        		            maxCalificacion = nota;
+        		            estudianteMax = estudiantes.get(i);
         		        }
         		    }
 
-        		    if (contadorValidas == 0) {
-        		        System.out.println("No hay calificaciones válidas para calcular promedio.");
-        		        return;
-        		    }
-
-        		    double promedio = suma / contadorValidas;
-        		    System.out.printf("El promedio de calificaciones es: %.2f%n", promedio);
+        		    System.out.println("El estudiante con la calificación más alta es: "
+        		            + estudianteMax + " con " + maxCalificacion);
         		}
-        	
-        	//Mostrar estudiante con la calificación más alta
-        	
-        	public static void mostrarMayor() {
-        		
-
-                    if (calificaciones.isEmpty()) {
-                        System.out.println("No hay calificaciones registradas.");
-                    } else {
-
-                        double maxCalificacion = calificaciones.get(0);
-                        String estudianteMax = estudiantes.get(0);
-
-                        for (int i = 1; i < calificaciones.size(); i++) {
-                            if (calificaciones.get(i) > maxCalificacion) {
-                                maxCalificacion = calificaciones.get(i);
-                                estudianteMax = estudiantes.get(i);
-                            }
-                        }
-
-                        System.out.println("El estudiante con la calificación más alta es: "
-                                + estudianteMax + " con " + maxCalificacion);
-                    }
-        	}
-        }
+       }
